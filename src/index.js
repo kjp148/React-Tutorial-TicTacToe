@@ -67,7 +67,7 @@ class Game extends React.Component
     const history = this.state.history.slice(0, this.state.stepNumber + 1); // This allows us to resume from a history state and overwrite future history.
     const current = history[history.length - 1];
     const squares = current.squares.slice(); // Slice creates a copy of the array so we don't mutate the last history object.
-    if (calculateWinner(squares) || squares[i]) // Ignore clicks if the game has been won.
+    if (calculateWinner(squares) || squares[i]) // Ignore grid clicks if the game has been won.
     {
       return;
     }
@@ -101,9 +101,12 @@ class Game extends React.Component
       const desc = move ?
         'Go to move #' + move :
         'Go to game start';
+      const currentType = (move === this.state.stepNumber) ? // Handling for bolding the current history step.
+        'history-button-current' :
+        'history-button';
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className={currentType} onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     })
