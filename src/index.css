@@ -49,3 +49,10 @@ body {
     margin-left: 20px;
   }
   
+  .history-button {
+    background: #ccc;
+  }
+
+  .history-button-current {
+    font-weight: bold;
+  }
