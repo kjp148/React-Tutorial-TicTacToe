@@ -160,10 +160,18 @@ function calculateWinner(squares)
   for (let i = 0; i < lines.length; i++) // Iterate through each possible winning combination.
   {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c])
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) // If each square in the possible combination is equal
     {
       return squares[a];
     }
   }
-  return null;
+  // Check if all squares are full but nobody has won
+  if (!squares.includes(null))
+  {
+    return "Nobody";
+  }
+  else
+  {
+    return null;
+  }
 }
